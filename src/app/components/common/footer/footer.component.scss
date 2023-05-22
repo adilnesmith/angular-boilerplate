@@ -28,7 +28,7 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: var(--tablet)) {
     .wrapper {
         &__columns {
             flex-direction: column;
