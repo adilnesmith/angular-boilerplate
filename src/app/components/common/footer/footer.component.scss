@@ -1,0 +1,49 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+
+    &__columns {
+        border: 1px solid #000;
+        display: flex;
+
+        &__first {
+            flex: 20%;
+            border: 1px solid #000;
+        }
+
+        &__second {
+            flex: 50%;
+            border: 1px solid #000;
+        }
+
+        &__third {
+            flex: 30%;
+            border: 1px solid #000;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        &__columns {
+            flex-direction: column;
+
+            &__first {
+                flex: 100%;
+            }
+
+            &__second {
+                flex: 100%;
+            }
+
+            &__third {
+                flex: 100%;
+            }
+        }
+    }
+}

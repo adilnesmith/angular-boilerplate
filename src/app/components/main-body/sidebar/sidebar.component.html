@@ -1,0 +1,9 @@
+<aside class="wrapper">
+    <nav>
+        <ul class="wrapper__navigation">
+            <li *ngFor="let link of sidebarLinks" class="wrapper__navigation__link">
+                <a href={{link.id}}>{{link.label}}</a>
+            </li>
+        </ul>
+    </nav>
+</aside>
