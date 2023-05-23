@@ -10,6 +10,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { Page1Component } from './components/page1/page1.component';
+import { HousingLocationComponent } from './components/housing-location/housing-location.component';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { Page1Component } from './components/page1/page1.component';
     MainBodyComponent,
     ProfileComponent,
     HomeComponent,
-    Page1Component
+    Page1Component,
+    HousingLocationComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
