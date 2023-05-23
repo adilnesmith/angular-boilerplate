@@ -2,7 +2,7 @@
     <nav>
         <ul class="wrapper__navigation">
             <li *ngFor="let link of sidebarLinks" class="wrapper__navigation__link">
-                <a href={{link.id}}>{{link.label}}</a>
+                <a [routerLink]="link.route">{{ link.label }}</a>
             </li>
         </ul>
     </nav>

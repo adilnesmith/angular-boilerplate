@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItem } from '../../../lib/@types/index'
 import { menuData } from '../../../lib/constants'
 @Component({
   selector: 'app-sidebar',
@@ -6,6 +7,5 @@ import { menuData } from '../../../lib/constants'
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
-  sidebarLinks = menuData;
-
+  sidebarLinks: MenuItem[] = menuData;
 }
