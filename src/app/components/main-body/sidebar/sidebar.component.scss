@@ -1,12 +1,8 @@
 .wrapper {
-    display: flex;
-    flex: 15%;
-    flex-grow: 0;
-
     &__navigation {
         list-style: none;
         margin: 0;
-        padding: 0 15px;
+        padding: 0;
 
         &__link {
             border: 1px solid #000;
