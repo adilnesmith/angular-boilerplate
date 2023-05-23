@@ -1,4 +1,4 @@
-import { MenuItem } from '../lib/@types/index'
+import { MenuItem } from './types/menuitem'
 
 
 export const menuData: MenuItem[] = [

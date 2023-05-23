@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HousingLocation } from '../../lib/@types/housinglocation';
+import { HousingLocation } from '../../lib/types/housinglocation';
 @Component({
   selector: 'app-housing-location',
   templateUrl: './housing-location.component.html',
