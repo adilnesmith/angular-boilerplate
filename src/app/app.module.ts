@@ -11,7 +11,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { Page1Component } from './components/page1/page1.component';
 import { HousingLocationComponent } from './components/housing-location/housing-location.component';
-import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +22,7 @@ import { DetailsComponent } from './details/details.component';
     ProfileComponent,
     HomeComponent,
     Page1Component,
-    HousingLocationComponent,
-    DetailsComponent
+    HousingLocationComponent
   ],
   imports: [
     BrowserModule,
