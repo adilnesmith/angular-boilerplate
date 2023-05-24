@@ -23,7 +23,7 @@ export class Page2Component implements OnInit {
     });
   }
   currentPage: number = 1;
-  itemsPerPage: number = 10; // Number of items to display per page
+  itemsPerPage: number = 20; // Number of items to display per page
   totalPages: number[] = [];
 
   updatePagination() {
