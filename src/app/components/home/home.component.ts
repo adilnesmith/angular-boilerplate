@@ -1,6 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { HousingService } from '../../housing.service';
 import { HousingLocation } from '../../lib/types/housinglocation';
+import { PaginationService } from '../../pagination.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,38 +13,38 @@ export class HomeComponent {
   filteredLocationList: HousingLocation[] = [];
   currentPage: number = 1;
   itemsPerPage: number = 3; // Number of items to display per page
-  totalPages: number[] = []; // Array of page numbers
-  housingService: HousingService = inject(HousingService);
+  totalPages: number[] = [];
 
-  constructor() {
+  constructor(private housingService: HousingService, private paginationService: PaginationService) {
     this.loadHousingLocations();
   }
 
   loadHousingLocations() {
     this.housingLocationList = this.housingService.getAllHousingLocations();
     this.filteredLocationList = this.housingLocationList.slice();
-    this.calculateTotalPages();
+    this.updatePagination();
   }
 
   filterResults(text: string) {
     if (!text) {
       this.filteredLocationList = this.housingLocationList;
+    } else {
+      this.filteredLocationList = this.housingLocationList.filter(
+        housingLocation => housingLocation?.city.toLowerCase().includes(text.toLowerCase())
+      );
     }
-
-    this.filteredLocationList = this.housingLocationList.filter(
-      housingLocation => housingLocation?.city.toLowerCase().includes(text.toLowerCase())
-    );
+    this.updatePagination();
   }
 
-  calculateTotalPages() {
-    const totalItems = this.filteredLocationList.length;
-    this.totalPages = Array(Math.ceil(totalItems / this.itemsPerPage)).fill(0).map((_, index) => index + 1);
+  updatePagination() {
+    this.totalPages = this.paginationService.calculateTotalPages(this.filteredLocationList, this.itemsPerPage);
+    this.currentPage = this.paginationService.adjustCurrentPage(this.currentPage, this.totalPages);
   }
 
   getPageItems(): HousingLocation[] {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
-    return this.filteredLocationList.slice(startIndex, endIndex);
+    return this.paginationService.getPageItems(this.filteredLocationList, startIndex, endIndex);
   }
 
   goToPage(pageNumber: number) {

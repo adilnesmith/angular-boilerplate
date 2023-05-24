@@ -1,4 +1,10 @@
+<app-search (searchChange)="filterResults($event)"></app-search>
+
 <h1>API Entries</h1>
 <ul>
-    <li *ngFor="let entry of entries">{{ entry.API }}</li>
+    <li *ngFor="let entry of getPageItems()">{{ entry.API }}</li>
 </ul>
+
+<div>
+    <button *ngFor="let page of totalPages" (click)="goToPage(page)">{{ page }}</button>
+</div>

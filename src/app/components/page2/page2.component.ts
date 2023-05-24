@@ -1,6 +1,7 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
+import { Entry } from '../../lib/types/entry';
+import { PaginationService } from '../../pagination.service';
 
 @Component({
   selector: 'app-page2',
@@ -8,13 +9,51 @@ import { ApiService } from '../../api.service';
   styleUrls: ['./page2.component.css']
 })
 export class Page2Component implements OnInit {
-  entries!: any
+  entries: Entry[] = [];
+  filteredEntries: Entry[] = [];
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private paginationService: PaginationService) { }
+
 
   ngOnInit() {
     this.apiService.getEntries().subscribe((data: any) => {
       this.entries = data.entries;
+      this.filteredEntries = this.entries.slice();
+      this.updatePagination();
     });
   }
+  currentPage: number = 1;
+  itemsPerPage: number = 10; // Number of items to display per page
+  totalPages: number[] = [];
+
+  updatePagination() {
+    this.totalPages = this.paginationService.calculateTotalPages(this.filteredEntries, this.itemsPerPage);
+    this.currentPage = this.paginationService.adjustCurrentPage(this.currentPage, this.totalPages);
+  }
+
+  getPageItems(): Entry[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.paginationService.getPageItems(this.filteredEntries, startIndex, endIndex);
+  }
+
+  goToPage(pageNumber: number) {
+    if (pageNumber >= 1 && pageNumber <= this.totalPages.length) {
+      this.currentPage = pageNumber;
+    }
+  }
+
+
+  filterResults(text: string) {
+    if (!text) {
+      this.filteredEntries = this.entries.slice();
+    } else {
+      this.filteredEntries = this.entries.filter(
+        (entry: Entry) => entry?.API.toLowerCase().includes(text.toLowerCase())
+      );
+    }
+    this.updatePagination();
+  }
+
+
 }

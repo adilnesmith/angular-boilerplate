@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/common/header/header.component';
@@ -12,6 +13,8 @@ import { HomeComponent } from './components/home/home.component';
 import { Page1Component } from './components/page1/page1.component';
 import { Page2Component } from './components/page2/page2.component';
 import { HousingLocationComponent } from './components/housing-location/housing-location.component';
+import { SearchComponent } from './components/ui/search/search.component';
+import { PaginationService } from './pagination.service';
 
 @NgModule({
   declarations: [
@@ -24,14 +27,16 @@ import { HousingLocationComponent } from './components/housing-location/housing-
     HomeComponent,
     Page1Component,
     Page2Component,
-    HousingLocationComponent
+    HousingLocationComponent,
+    SearchComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
+    FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [PaginationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
