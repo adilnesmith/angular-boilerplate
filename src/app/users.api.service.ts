@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { User } from './lib/types/user';
 @Injectable({
     providedIn: 'root'
 })
@@ -16,7 +16,7 @@ export class ApiService {
         return this.request('GET', url);
     }
 
-    post(url: string, data: any) {
+    post(url: string, data: User) {
         return this.request('POST', url, data);
     }
 
@@ -24,7 +24,7 @@ export class ApiService {
         return this.request('PUT', url, data);
     }
 
-    delete(url: string, data?: any) {
-        return this.request('DELETE', url, data);
+    delete(url: string) {
+        return this.request('DELETE', url);
     }
 }

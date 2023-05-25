@@ -1,8 +1,10 @@
-<input type="text" placeholder="Full Name">
-<input type="email" placeholder="Email">
-<input type="number" placeholder="Age">
-<input type="password" placeholder="Password">
-<button>Add user</button>
+<form #userForm="ngForm">
+    <input type="text" placeholder="Full Name" name="fullName" ngModel required>
+    <input type="email" placeholder="Email" name="email" ngModel required>
+    <input type="number" placeholder="Age" name="age" ngModel required>
+    <input type="password" placeholder="Password" name="password" ngModel required>
+    <button (click)="addUser(userForm)">Add user</button>
+</form>
 <h2>All users</h2>
 <table>
     <tr>
@@ -20,8 +22,8 @@
         <td>{{user.createdAt}}</td>
         <td>{{user.updatedAt}}</td>
         <td>
-            <button>Edit</button>
-            <button>Delete</button>
+            <button (click)="editUser(user._id)">Edit</button>
+            <button (click)="deleteUser(user._id)">Delete</button>
         </td>
     </tr>
 </table>
