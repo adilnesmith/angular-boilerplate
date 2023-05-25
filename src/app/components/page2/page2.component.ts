@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../api.service';
+import { ApiService } from '../../entries.api.service';
 import { Entry } from '../../lib/types/entry';
 import { PaginationService } from '../../pagination.service';
 

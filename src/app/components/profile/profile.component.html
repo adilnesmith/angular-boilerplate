@@ -1,5 +1,6 @@
 <input type="text" placeholder="Full Name">
 <input type="email" placeholder="Email">
+<input type="number" placeholder="Age">
 <input type="password" placeholder="Password">
 <button>Add user</button>
 <h2>All users</h2>
@@ -7,11 +8,17 @@
     <tr>
         <th>Full Name</th>
         <th>Email</th>
+        <th>Age</th>
+        <th>Created Date</th>
+        <th>Modified Date</th>
         <th>Actions</th>
     </tr>
-    <tr>
-        <td>First name Last name</td>
-        <td>example@gmail.com</td>
+    <tr *ngFor="let user of users">
+        <td>{{user.fullName}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.age}}</td>
+        <td>{{user.createdAt}}</td>
+        <td>{{user.updatedAt}}</td>
         <td>
             <button>Edit</button>
             <button>Delete</button>
