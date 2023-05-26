@@ -3,7 +3,9 @@
     <input type="email" placeholder="Email" name="email" ngModel required>
     <input type="number" placeholder="Age" name="age" ngModel required>
     <input type="password" placeholder="Password" name="password" ngModel required>
-    <button (click)="addUser(userForm)">Add user</button>
+    <button (click)="editMode ? editUser(userForm) : addUser(userForm)">{{ editMode ? 'Edit user' : 'Add user'
+        }}</button>
+
 </form>
 <h2>All users</h2>
 <table>
@@ -22,7 +24,7 @@
         <td>{{user.createdAt}}</td>
         <td>{{user.updatedAt}}</td>
         <td>
-            <button (click)="editUser(user._id)">Edit</button>
+            <button (click)="populateFields(user,userForm)">Edit</button>
             <button (click)="deleteUser(user._id)">Delete</button>
         </td>
     </tr>
