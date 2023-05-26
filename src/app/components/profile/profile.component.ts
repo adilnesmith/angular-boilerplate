@@ -34,8 +34,8 @@ export class ProfileComponent {
     }
   }
   fetchUserList() {
-    this.apiService.get("users").subscribe((_users: any) => {
-      this.users = _users.data;
+    this.apiService.get("users?sort=fullName&order=asc&page=1&limit=10").subscribe((_users: any) => {
+      this.users = _users.data.items;
     });
   }
   populateFields(user: User, userForm: NgForm) {
