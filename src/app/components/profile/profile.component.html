@@ -21,8 +21,8 @@
         <td>{{user.fullName}}</td>
         <td>{{user.email}}</td>
         <td>{{user.age}}</td>
-        <td>{{user.createdAt}}</td>
-        <td>{{user.updatedAt}}</td>
+        <td>{{user.createdAt | date:'short'}}</td>
+        <td>{{user.updatedAt | date:'short'}}</td>
         <td>
             <button (click)="populateFields(user,userForm)">Edit</button>
             <button (click)="deleteUser(user._id)">Delete</button>
