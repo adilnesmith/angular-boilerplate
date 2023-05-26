@@ -5,7 +5,11 @@
     <input type="password" placeholder="Password" name="password" ngModel required>
     <button (click)="editMode ? editUser(userForm) : addUser(userForm)">{{ editMode ? 'Edit user' : 'Add user'
         }}</button>
-
+    <button *ngIf="showChangePasswordButton" (click)="showChangePasswordFields = true">Change password</button><br>
+    <input type="password" placeholder="Current password" name="currentPassword" ngModel
+        *ngIf="showChangePasswordFields">
+    <input type="password" placeholder="New password" name="newPassword" ngModel *ngIf="showChangePasswordFields">
+    <button *ngIf="showChangePasswordFields" (click)="changePassword(userForm)">Update password</button>
 </form>
 <h2>All users</h2>
 <table>

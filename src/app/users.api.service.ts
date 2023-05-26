@@ -16,7 +16,7 @@ export class ApiService {
         return this.request('GET', url);
     }
 
-    post(url: string, data: User) {
+    post(url: string, data: any) {
         return this.request('POST', url, data);
     }
 

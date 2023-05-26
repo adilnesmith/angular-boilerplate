@@ -11,6 +11,8 @@ export class ProfileComponent {
   users!: User[];
   selectedUser: any;
   editMode = false;
+  showChangePasswordButton: boolean = false;
+  showChangePasswordFields: boolean = false;
   constructor(private apiService: ApiService,) { }
   ngOnInit() {
     this.fetchUserList();
@@ -33,7 +35,7 @@ export class ProfileComponent {
   }
   fetchUserList() {
     this.apiService.get("users").subscribe((_users: any) => {
-      this.users = _users;
+      this.users = _users.data;
     });
   }
   populateFields(user: User, userForm: NgForm) {
@@ -46,6 +48,7 @@ export class ProfileComponent {
       password: user.password
     });
     userForm.controls['password']?.disable();
+    this.showChangePasswordButton = true
     this.editUser(userForm);
   }
   editUser(userForm: NgForm) {
@@ -71,5 +74,17 @@ export class ProfileComponent {
         alert("user removed");
       });
     }
+  }
+  changePassword(userForm: NgForm) {
+    const payload = {
+      userId: this.selectedUser?._id,
+      currentPassword: userForm.value.currentPassword,
+      newPassword: userForm.value.newPassword
+    };
+    this.apiService.post("users/change-password", payload).subscribe((response) => {
+      if (response) {
+        console.log(response);
+      }
+    });
   }
 }
