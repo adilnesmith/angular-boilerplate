@@ -15,6 +15,8 @@ import { Page2Component } from './components/page2/page2.component';
 import { HousingLocationComponent } from './components/housing-location/housing-location.component';
 import { SearchComponent } from './components/ui/search/search.component';
 import { PaginationService } from './pagination.service';
+import { LoginComponent } from './pages/login/login.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { PaginationService } from './pagination.service';
     Page1Component,
     Page2Component,
     HousingLocationComponent,
-    SearchComponent
+    SearchComponent,
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     HttpClientModule,
