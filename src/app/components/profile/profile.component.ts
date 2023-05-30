@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ApiService } from '../../users.api.service';
 import { User } from '../../lib/types/user';
+import { LocalStorageService } from 'src/app/services/localStorage.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -13,7 +14,7 @@ export class ProfileComponent {
   editMode = false;
   showChangePasswordButton: boolean = false;
   showChangePasswordFields: boolean = false;
-  constructor(private apiService: ApiService,) { }
+  constructor(private apiService: ApiService, private localStorageService: LocalStorageService) { }
   ngOnInit() {
     this.fetchUserList();
   }
@@ -34,10 +35,30 @@ export class ProfileComponent {
     }
   }
   fetchUserList() {
-    this.apiService.get("users?sort=fullName&order=asc&page=1&limit=10").subscribe((_users: any) => {
-      this.users = _users.data.items;
-    });
+    this.apiService.get("users?sort=fullName&order=asc&page=1&limit=10").subscribe(
+      (response: any) => {
+        this.users = response.data.items;
+      },
+      (error: any) => {
+        if (error.status === 401) {
+          const userJson = this.localStorageService.get("user");
+          const userObj = userJson !== null ? JSON.parse(userJson) : null;
+          let refresh_token = userObj.refresh_token
+          let payload = {
+            refresh_token: refresh_token
+          }
+          this.apiService.post("auth/refresh-token", payload).subscribe((response: any) => {
+            if (response?.success) {
+              let a = userObj.access_token = response?.access_token
+              this.localStorageService.set("user", JSON.stringify(userObj))
+              this.fetchUserList()
+            }
+          });
+        }
+      }
+    );
   }
+
   populateFields(user: User, userForm: NgForm) {
     this.editMode = true;
     this.selectedUser = user;

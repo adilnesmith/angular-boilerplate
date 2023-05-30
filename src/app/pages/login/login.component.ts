@@ -21,7 +21,8 @@ export class LoginComponent {
         if (response?.access_token) {
           let user = {
             loggedIn: true,
-            access_token: response?.access_token
+            access_token: response?.access_token,
+            refresh_token: response?.refresh_token
           }
           this.localStorageService.set("user", JSON.stringify(user))
         }
