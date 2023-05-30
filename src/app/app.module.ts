@@ -17,6 +17,7 @@ import { SearchComponent } from './components/ui/search/search.component';
 import { PaginationService } from './pagination.service';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { LocalStorageService } from './services/localStorage.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [PaginationService],
+  providers: [PaginationService, LocalStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
