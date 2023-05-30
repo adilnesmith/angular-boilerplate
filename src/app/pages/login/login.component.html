@@ -1,1 +1,6 @@
-<button (click)="login()">Login</button>
+<h2>Login</h2>
+<form #loginForm="ngForm">
+    <input type="email" name="email" ngModel required />
+    <input type="password" name="password" ngModel required />
+    <button (click)="login(loginForm)">Login</button>
+</form>
