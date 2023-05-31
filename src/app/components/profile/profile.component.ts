@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ApiService } from '../../users.api.service';
-import { User } from '../../lib/types/user';
+import { ApiService } from 'src/app/users.api.service';
+import { User } from 'src/app/lib/types/user';
 import { LocalStorageService } from 'src/app/services/localStorage.service';
 @Component({
   selector: 'app-profile',

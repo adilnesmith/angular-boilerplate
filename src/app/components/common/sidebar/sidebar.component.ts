@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuItem } from '../../../lib/types/menuitem'
-import { menuData } from '../../../lib/constants'
+import { MenuItem } from 'src/app/lib/types/menuitem'
+import { menuData } from 'src/app/lib/constants'
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
