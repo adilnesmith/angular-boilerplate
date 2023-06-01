@@ -14,10 +14,10 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'page1', component: Page1Component },
   { path: 'page2', component: Page2Component },
-  { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
   { path: 'auth/login', component: LoginComponent, canActivate: [LoginGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: 'auth/login' }
+  { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'auth/login' },
 ];
 
 @NgModule({
