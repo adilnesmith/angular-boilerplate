@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { LocalStorageService } from 'src/app/services/localStorage.service';
-import { ApiService } from 'src/app/users.api.service';
+import { ApiService } from 'src/app/services/users.api.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',

@@ -14,7 +14,7 @@ import { Page1Component } from './components/page1/page1.component';
 import { Page2Component } from './components/page2/page2.component';
 import { HousingLocationComponent } from './components/housing-location/housing-location.component';
 import { SearchComponent } from './components/ui/search/search.component';
-import { PaginationService } from './pagination.service';
+import { PaginationService } from './services/pagination.service';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LocalStorageService } from './services/localStorage.service';

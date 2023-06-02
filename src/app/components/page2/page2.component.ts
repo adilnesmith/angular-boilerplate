@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/entries.api.service';
+import { ApiService } from 'src/app/services/entries.api.service';
 import { Entry } from 'src/app/lib/types/entry';
-import { PaginationService } from 'src/app/pagination.service';
+import { PaginationService } from 'src/app/services/pagination.service';
 
 @Component({
   selector: 'app-page2',

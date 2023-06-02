@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { HousingService } from 'src/app/housing.service';
+import { HousingService } from 'src/app/services/housing.service';
 import { HousingLocation } from 'src/app/lib/types/housinglocation';
-import { PaginationService } from 'src/app/pagination.service';
+import { PaginationService } from 'src/app/services/pagination.service';
 
 @Component({
   selector: 'app-home',

@@ -7,7 +7,7 @@ import { Page2Component } from './components/page2/page2.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './auth/auth.guard';
-import { LoginGuard } from './login.guard';
+import { LoginGuard } from './auth/login.guard';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
