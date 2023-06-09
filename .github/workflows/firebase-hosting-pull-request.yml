@@ -23,3 +23,5 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ANGULAR_APP_99E26 }}'
           projectId: angular-app-99e26
           expires: 30d
+        env:
+            FIREBASE_CLI_EXPERIMENTS: webframeworks
