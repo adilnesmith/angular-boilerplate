@@ -21,3 +21,5 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ANGULAR_APP_99E26 }}'
           channelId: live
           projectId: angular-app-99e26
+        env:
+            FIREBASE_CLI_EXPERIMENTS: webframeworks
