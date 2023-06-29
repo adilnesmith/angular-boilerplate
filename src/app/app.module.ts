@@ -16,7 +16,6 @@ import { HousingLocationComponent } from './components/housing-location/housing-
 import { SearchComponent } from './components/ui/search/search.component';
 import { PaginationService } from './services/pagination.service';
 import { LoginComponent } from './pages/login/login.component';
-// import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LocalStorageService } from './services/localStorage.service';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
