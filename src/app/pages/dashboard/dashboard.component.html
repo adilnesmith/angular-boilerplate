@@ -1,3 +1,41 @@
-<app-header></app-header>
-<app-main-body class="main-body"></app-main-body>
-<app-footer></app-footer>
+<div>
+  <div>
+    <nav>
+      <div>
+        <ul>
+          <li>
+            <a>
+              User Profile
+            </a>
+          </li>
+          <li>
+            <a (click)="authService.SignOut()">
+              Log out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <div>
+        <div>
+          <h1>User Profile</h1>
+        </div>
+        <div *ngIf="authService.userData as user">
+          <div>
+            <div>
+              <img src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}" alt="{{user.displayName}}">
+              <div>
+                <h1>Hello: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h1>
+                <p>User ID: <strong>{{user.uid}}</strong></p>
+                <p>Email: <strong>{{user.email}}</strong></p>
+                <p>Email Verified: <strong>{{user.emailVerified}}</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</div>

@@ -16,11 +16,24 @@ import { HousingLocationComponent } from './components/housing-location/housing-
 import { SearchComponent } from './components/ui/search/search.component';
 import { PaginationService } from './services/pagination.service';
 import { LoginComponent } from './pages/login/login.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+// import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LocalStorageService } from './services/localStorage.service';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from 'src/environments/environment';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+
+// User managment pages
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './pages/verify-email/verify-email.component';
+
+// service
+import { AuthService } from './shared/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -36,17 +49,25 @@ import { environment } from 'src/environments/environment';
     HousingLocationComponent,
     SearchComponent,
     LoginComponent,
-    DashboardComponent
+
+    DashboardComponent,
+    SignInComponent,
+    SignUpComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent,
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     FormsModule,
-    AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
+    AppRoutingModule,
   ],
-  providers: [PaginationService, LocalStorageService],
+  providers: [PaginationService, LocalStorageService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
