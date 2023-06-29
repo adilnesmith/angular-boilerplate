@@ -17,14 +17,13 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { VerifyEmailComponent } from './pages/verify-email/verify-email.component';
 
 const routes: Routes = [
-  // { path: 'home', component: HomeComponent },
-  // { path: 'profile', component: ProfileComponent },
-  // { path: 'page1', component: Page1Component },
-  // { path: 'page2', component: Page2Component },
+  { path: 'home', component: HomeComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'page1', component: Page1Component },
+  { path: 'page2', component: Page2Component },
   // { path: 'auth/login', component: LoginComponent, canActivate: [LoginGuard] },
   // { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  // { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
-  // { path: '**', redirectTo: 'auth/login' },
+  // { path: '**', redirectTo: '/sign-in' },
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
   { path: 'sign-in', component: SignInComponent },
   { path: 'register-user', component: SignUpComponent },

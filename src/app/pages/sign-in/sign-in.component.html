@@ -5,14 +5,12 @@
       <div>
         <input type="text" placeholder="Username" #userName required />
       </div>
-
       <div>
         <input type="password" placeholder="Password" #userPassword required />
       </div>
       <div>
         <input type="button" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)" />
       </div>
-
       <div>
         <span><span>Or</span></span>
       </div>
@@ -21,12 +19,10 @@
           Log in with Google
         </button>
       </div>
-
       <div>
         <span routerLink="/forgot-password">Forgot Password?</span>
       </div>
     </div>
-
     <div>
       <span>Don't have an account?<span routerLink="/register-user">
           Sign Up</span></span>
