@@ -7,7 +7,8 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-
+import { NgForm } from '@angular/forms';
+import { ApiService } from 'src/app/services/users.api.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -18,7 +19,8 @@ export class AuthService {
     public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
-    public ngZone: NgZone // NgZone service to remove outside scope warning
+    public ngZone: NgZone, // NgZone service to remove outside scope warning
+    private apiService: ApiService,
   ) {
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
@@ -52,18 +54,32 @@ export class AuthService {
   }
 
   // Sign up with email/password
-  SignUp(email: string, password: string) {
-    return this.afAuth
-      .createUserWithEmailAndPassword(email, password)
-      .then((result) => {
-        /* Call the SendVerificaitonMail() function when new user sign 
-        up and returns promise */
-        this.SendVerificationMail();
-        this.SetUserData(result.user);
-      })
-      .catch((error) => {
-        window.alert(error.message);
-      });
+  SignUp(userForm: NgForm) {
+    if (userForm.valid) {
+      console.log(userForm, "addd")
+      return this.afAuth.createUserWithEmailAndPassword(userForm.value.email, userForm.value.password)
+        .then((result) => {
+          /* Call the SendVerificationMail() function when new user sign 
+          up and returns promise */
+          this.SendVerificationMail();
+          if (result?.user) {
+            const payload = {
+              uid: result.user.uid,
+              fullName: userForm.value.fullName,
+              age: userForm.value.age,
+            };
+            this.apiService.post("users", payload).subscribe(() => {
+              userForm.reset();
+            });
+
+            this.SetUserData(result.user);
+          }
+        })
+        .catch((error) => {
+          window.alert(error.message);
+        });
+    }
+    return null;
   }
 
   // Send email verfificaiton when new user sign up

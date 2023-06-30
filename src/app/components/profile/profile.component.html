@@ -1,4 +1,4 @@
-<form #userForm="ngForm">
+<!-- <form #userForm="ngForm">
     <input type="text" placeholder="Full Name" name="fullName" ngModel required>
     <input type="email" placeholder="Email" name="email" ngModel required>
     <input type="number" placeholder="Age" name="age" ngModel required>
@@ -10,7 +10,7 @@
         *ngIf="showChangePasswordFields">
     <input type="password" placeholder="New password" name="newPassword" ngModel *ngIf="showChangePasswordFields">
     <button *ngIf="showChangePasswordFields" (click)="changePassword(userForm)">Update password</button>
-</form>
+</form> -->
 <h2>All users</h2>
 <table>
     <tr>
@@ -19,7 +19,7 @@
         <th>Age</th>
         <th>Created Date</th>
         <th>Modified Date</th>
-        <th>Actions</th>
+        <!-- <th>Actions</th> -->
     </tr>
     <tr *ngFor="let user of users">
         <td>{{user.fullName}}</td>
@@ -27,9 +27,9 @@
         <td>{{user.age}}</td>
         <td>{{user.createdAt | date:'short'}}</td>
         <td>{{user.updatedAt | date:'short'}}</td>
-        <td>
+        <!-- <td>
             <button (click)="populateFields(user,userForm)">Edit</button>
             <button (click)="deleteUser(user._id)">Delete</button>
-        </td>
+        </td> -->
     </tr>
 </table>

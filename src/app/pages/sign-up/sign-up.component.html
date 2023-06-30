@@ -2,29 +2,20 @@
   <div>
     <div>
       <h3>Sign Up</h3>
+      <form #userForm="ngForm">
+        <input type="text" placeholder="Full Name" name="fullName" ngModel required>
+        <input type="number" placeholder="Age" name="age" ngModel required>
+        <input type="email" placeholder="Email Address" name="email" ngModel required />
+        <input type="password" placeholder="Password" name="password" ngModel required />
+        <input type="button" value="Sign Up" (click)="authService.SignUp(userForm)" />
+      </form>
+      <span class="or"><span class="orInner">Or</span></span>
+      <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
+        Continue with Google
+      </button>
       <div>
-        <input type="email" placeholder="Email Address" #userEmail required />
+        <span>Already have an account?
+          <span routerLink="/sign-in">Log In</span></span>
       </div>
-      <div>
-        <input type="password" placeholder="Password" #userPwd required />
-      </div>
-
-      <div>
-        <input type="button" value="Sign Up" (click)="authService.SignUp(userEmail.value, userPwd.value)" />
-      </div>
-      <div>
-        <span class="or"><span class="orInner">Or</span></span>
-      </div>
-      <div>
-        <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
-          Continue with Google
-        </button>
-      </div>
-    </div>
-
-    <div>
-      <span>Already have an account?
-        <span routerLink="/sign-in">Log In</span></span>
     </div>
   </div>
-</div>
